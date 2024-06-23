@@ -24,22 +24,6 @@ class DetailsAkun extends Controller
         }
     }
 
-    
-
-    // public function editAccount($id)
-    // {
-    //     $response = Http::withToken(session('token'))->get('http://127.0.0.1:8000/api/update-user/' . $id);
-
-    //     $account = [];
-    //     if ($response->status() == 200) {
-    //         $result = $response->json();
-    //         $account = $result['data'];
-    //         Log::info('Data akun: ' . json_encode($account));
-    //         return view('account.show', compact('account'));
-    //     } else {
-    //         return back()->withErrors(['apiError' => 'Gagal mengambil data akun dari API']);
-    //     }
-    // }
 
     public function editAccount(Request $request, $id)
     {
@@ -53,4 +37,5 @@ class DetailsAkun extends Controller
             return back()->withErrors(['apiError' => 'Gagal memperbarui data akun dari API']);
         }
     }
+    
 }

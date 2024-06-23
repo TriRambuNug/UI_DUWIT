@@ -15,29 +15,32 @@
             <h5 class="card-header">Akun Details</h5>
             <!-- Account -->
             <div class="card-body">
-                <div class="d-flex align-items-start align-items-sm-center gap-4">
+            <form id="formAccountSettings" method="POST" action="{{ route('profile.update', ['id' => $user['id']]) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="d-flex align-items-start align-items-sm-center gap-4">
                     <img src="#" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
                     <div class="button-wrapper">
                         <div class="row">
                             <div class="mb-3 col-md-6 col-xl-12">
                                 <label for="fullname" class="form-label">Nama Pengguna</label>
-                                <input class="form-control" type="text" id="fullname" name="fullname" value="{{ $account['fullname'] }}" autofocus readonly />
+                                <input class="form-control" type="text" id="fullname" name="fullname" value="{{ $user['fullname'] }}" autofocus />
                             </div>
                             <div class="mb-3 col-md-6 col-xl-12">
                                 <label for="phone" class="form-label">Nomor Telepon</label>
-                                <input class="form-control" type="text" id="phone" name="phone" value="{{ $account['phone'] }}" autofocus readonly />
+                                <input class="form-control" type="text" id="phone" name="phone" value="{{ $user['phone'] }}" autofocus />
                             </div>
                         </div>
                     </div>
                     <div class="button-wrapper">
                         <div class="row">
                             <div class="mb-3 col-md-6 col-xl-12">
-                                <label for="patner_code" class="form-label">Kode Patner</label>
-                                <input class="form-control" type="text" id="patner_code" name="patner_code" value="{{ $account['account_code'] }}" autofocus readonly />
+                                <label for="account_code" class="form-label">Kode Akun</label>
+                                <input class="form-control" type="text" id="account_code" name="account_code" value="{{ $user['account_code'] }}" autofocus readonly />
                             </div>
                             <div class="mb-3 col-md-6 col-xl-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input class="form-control-plaintext" type="text" id="email" name="email" value="{{ $account['email'] }}" autofocus readonly/>
+                                <input class="form-control-plaintext" type="text" id="email" name="email" value="{{ $user['email'] }}" autofocus/>
                             </div>
                         </div>
                     </div>
@@ -45,27 +48,24 @@
             </div>
             <hr class="my-0" />
             <div class="card-body">
-                <form id="formAccountSettings" method="POST" action="{{ route('account.update', ['id' => $account['id']]) }}" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="mb-3 col-sm-6 col-md-6 col-xl-6">
                             <label for="type" class="form-label">Tipe Akun</label>
-                            <input class="form-control" type="text" id="type" name="type" value="{{ $account['type'] }}" autofocus readonly />
+                            <input class="form-control" type="text" id="type" name="type" value="{{ $user['type'] }}" autofocus readonly />
                         </div>
                         <div class="mb-3 col-sm-6 col-md-6 col-xl-6">
                             <label for="role" class="form-label">Peran</label>
-                            <input class="form-control" type="text" id="role" name="role" value="{{ $account['role'] }}" autofocus readonly />
+                            <input class="form-control" type="text" id="role" name="role" value="{{ $user['role'] }}" autofocus readonly />
                         </div>
                         <div class="mb-3 col-sm-6 col-md-4 col-xl-4">
                             <label for="pin" class="form-label">PIN</label>
-                            <input class="form-control" type="text" id="pin" name="pin" value="{{ $account['pin'] }}" autofocus readonly />
+                            <input class="form-control" type="text" id="pin" name="pin" value="{{ $user['pin'] }}" autofocus />
                         </div>
                         <div class="mb-3 col-sm-6 col-md-6 col-xl-6">
                             <label for="status" class="form-label">Status</label>
                             <select class="form-select" id="status" aria-label="Default select example" name="status">
                                 @php
-                                    $status = $account['status'];
+                                    $status = $user['status'];
                                     if ($status == 'active') {
                                         echo "<option value='active' selected>active</option>";
                                         echo "<option value='blocked'>blocked</option>";
@@ -77,6 +77,17 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- <div class="row">
+                        <div class="mb-3 col-sm-6 col-md-6 col-xl-6">
+                            <label for="password" class="form-label">Password Baru</label>
+                            <input class="form-control" type="password" id="password" name="password" autofocus />
+                        </div>
+                        <div class="mb-3 col-sm-6 col-md-6 col-xl-6">
+                            <label for="password_confirmation" class="form-label">Konfirmasi Password Baru</label>
+                            <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" autofocus />
+                        </div>
+                    </div> -->
                     @if (session('status'))
                         <div class="alert alert-dark alert-dismissible" role="alert">
                             {{ session('status') }}
@@ -93,9 +104,9 @@
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
             <!-- /Account -->
+            </form>
         </div>
     </div>
 </div>

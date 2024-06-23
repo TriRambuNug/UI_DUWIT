@@ -55,7 +55,7 @@
      <ul class="menu-inner py-1">
           <!-- Dashboard -->
           <li class="menu-item active">
-               <a href="index.html" class="menu-link">
+               <a href="{{ route('dashboard') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Dashboard</div>
                </a>
@@ -66,7 +66,7 @@
           </li>
 
           <li class="menu-item">
-               <a href="#" class="menu-link">
+               <a href="{{ route('dashboard') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user"></i>
                     <div data-i18n="Basic">User Account</div>
                </a>
@@ -90,12 +90,12 @@
                </a>
                <ul class="menu-sub">
                     <li class="menu-item">
-                         <a href="pages-account-settings-account.html" class="menu-link">
+                         <a href="{{ route('admin-topup.create') }}" class="menu-link">
                               <div data-i18n="Account">Top up Process</div>
                          </a>
                     </li>
                     <li class="menu-item">
-                         <a href="pages-account-settings-notifications.html" class="menu-link">
+                         <a href="{{ route('admin-topup.history') }}" class="menu-link">
                               <div data-i18n="Notifications">Top up History</div>
                          </a>
                     </li>
