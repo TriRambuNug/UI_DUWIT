@@ -22,6 +22,7 @@ Route::post('/logout', [DashboardController::class, 'logout'])->name('logout');
 Route::get('/account/{id}', [DetailsAkun::class, 'detailsAccount'])->name('account.details');
 Route::put('/account/{id}', [DetailsAkun::class, 'editAccount'])->name('account.update');
 
+
 Route::get('/patner', [PatnerController::class, 'index'])->name('patner.index');
 Route::get('/patner/{id}', [PatnerController::class, 'detailsPatner'])->name('patner.details');
 Route::put('/patner/{id}', [PatnerController::class, 'editPatner'])->name('patner.update');
@@ -34,3 +35,5 @@ Route::get('/topup-history', [TopUpController::class, 'getTopUp'])->name('admin-
 //profile
 Route::get('/profile', [UserController::class, 'detailsAccount'])->name('profile.index');
 Route::put('/profile/{id}', [UserController::class, 'editAccount'])->name('profile.update');
+Route::get('/ubah-password/{id}', [UserController::class, 'showEditPasswordForm'])->name('profile.editPassword');
+Route::put('/ubah-password/{id}', [UserController::class, 'editPassword'])->name('profile.updatePassword');

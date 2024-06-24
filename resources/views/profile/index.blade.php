@@ -57,10 +57,6 @@
                             <label for="role" class="form-label">Peran</label>
                             <input class="form-control" type="text" id="role" name="role" value="{{ $user['role'] }}" autofocus readonly />
                         </div>
-                        <div class="mb-3 col-sm-6 col-md-4 col-xl-4">
-                            <label for="pin" class="form-label">PIN</label>
-                            <input class="form-control" type="text" id="pin" name="pin" value="{{ $user['pin'] }}" autofocus />
-                        </div>
                         <div class="mb-3 col-sm-6 col-md-6 col-xl-6">
                             <label for="status" class="form-label">Status</label>
                             <select class="form-select" id="status" aria-label="Default select example" name="status">
@@ -77,17 +73,6 @@
                             </select>
                         </div>
                     </div>
-
-                    <!-- <div class="row">
-                        <div class="mb-3 col-sm-6 col-md-6 col-xl-6">
-                            <label for="password" class="form-label">Password Baru</label>
-                            <input class="form-control" type="password" id="password" name="password" autofocus />
-                        </div>
-                        <div class="mb-3 col-sm-6 col-md-6 col-xl-6">
-                            <label for="password_confirmation" class="form-label">Konfirmasi Password Baru</label>
-                            <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" autofocus />
-                        </div>
-                    </div> -->
                     @if (session('status'))
                         <div class="alert alert-dark alert-dismissible" role="alert">
                             {{ session('status') }}
@@ -101,6 +86,9 @@
                             </div>
                             <div class="col col-auto">
                                 <button type="submit" class="btn btn-primary me-2">Simpan Perubahan</button>
+                            </div>
+                            <div class="col col-auto">
+                                <a href="{{ route('profile.editPassword', ['id' => $user['id']]) }}" class="btn btn-warning me-2">Ubah Password</a>
                             </div>
                         </div>
                     </div>
