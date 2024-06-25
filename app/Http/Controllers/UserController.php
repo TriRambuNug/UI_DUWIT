@@ -70,7 +70,8 @@ class UserController extends Controller
     // Make API request to update the password
     $response = Http::withToken(session('token'))->put('http://127.0.0.1:8000/api/update-password/' . $id, [
         'current_password' => $request->input('current_password'),
-        'new_password' => $request->input('new_password')
+        'new_password' => $request->input('new_password'),
+        'new_password_confirmation' => $request->input('new_password_confirmation')
     ]);
 
     // Log API response
